@@ -1,3 +1,57 @@
-# E-commerce-Hypothesis-Prioritization-A-B-Testing-Analysis
+# E-commerce Hypothesis Prioritization & A/B Testing Analysis
+
 Data-driven optimization connecting marketing frameworks (RICE/ICE) and A/B testing with end-to-end business strategy. This project goes beyond pure analytics to evaluate how commercial hypotheses directly impact user conversion, operational scale, efficiency, and revenue growth.
-📌 ProblemThe e-commerce platform lacked a structured, data-driven mechanism to validate and prioritize growth initiatives, risking inefficient resource allocation on marketing and product changes. The objective of this project was twofold: first, to systematically prioritize nine revenue-driving hypotheses using frameworks that balance business value against implementation cost; and second, to analyze a live A/B test to determine if the proposed changes statistically improved conversion rates and average order values without introducing anomalous distortions.🛠️ What I Did (Step-by-Step)1. Data Preprocessing & Integrity AuditCleaned and parsed temporal variables across datasets (orders_us.csv and visits_us.csv).Identified and mitigated critical data integrity issues, specifically detecting and isolating cross-contamination users (visitors who erroneously appeared in both test groups A and B) to prevent variance pollution.2. Algorithmic Hypothesis PrioritizationICE Scoring: Evaluated and ranked the 9 marketing hypotheses based on Impact, Confidence, and Effort.RICE Scoring: Integrated the Reach metric into the mathematical framework to recalibrate priorities based on total customer exposure.Sensitivity Analysis: Compared both frameworks to evaluate how scaling user reach shifts strategic priorities, justifying why certain high-effort hypotheses moved to the top of the backlog.3. Cumulative A/B Test Metrics & Visual AnalysisComputed and visualized cumulative revenue and cumulative average purchase size per group over time to monitor structural stability and trend progression.Plotted the relative difference in cumulative average order size for Group B vs. Group A to locate fluctuations and potential stabilization points.Calculated and mapped daily conversion rates (orders/visits) to track behavioral divergence between segments.4. Statistical Anomalies & Outlier FilteringGenerated scatter plots for order volume per user and individual transaction revenue to visually isolate extreme behavior.Calculated the 95th and 99th percentiles for both metrics to establish mathematical thresholds for anomalies, defining data points beyond the 95th percentile as statistical outliers.5. Hypotheses Testing & Significance EvaluationFormulated Null ($H_0$) and Alternative ($H_1$) hypotheses for conversion rates and average order values.Conducted Mann-Whitney U tests to evaluate statistical significance on raw data.Filtered out the calculated outliers and re-ran the non-parametric tests on the clean dataset to isolate the true treatment effect from noise.💼 Operational Impact & Decision MatrixWhen choosing a prioritization framework or determining an A/B test outcome, evaluating engineering costs against user reach is critical for maximizing ROI. Below is the decision framework applied to this project:PhaseEvaluation CriteriaStrategic ChoiceBusiness RationaleBacklog PrioritizationICE vs. RICERICE FrameworkICE biased high-impact changes that only affected a tiny fraction of users. RICE mathematically favored initiatives with a massive Reach, optimizing engineering resources for maximum revenue exposure.Data IntegrityRaw vs. Filtered DataFiltered Data (95th Percentile)Raw data was heavily distorted by large, isolated wholesale-like orders. Filtering the top 5% of anomalies allowed us to see the true statistical behavior of standard retail customers.A/B Test OutcomeStop vs. Continue TestStop Test & Declare WinnerThe conversion rate achieved a clear statistical divergence and stabilized early on. Continuing the test would waste traffic and advertising spend without changing the statistical outcome.🚀 Key ResultsPrioritization Shift: Identified that introducing Reach shifted the #1 priority hypothesis from the ICE backlog downward, elevating a broader-reach marketing initiative that maximized customer exposure and optimized implementation costs.Statistically Significant Conversion: The filtered Mann-Whitney U test confirmed a statistically significant increase in the conversion rate for Group B, establishing it as the clear leader in driving user transactions.Order Value Stability: While cumulative revenue increased due to a higher volume of transactions, the statistical analysis proved there was no significant difference in the average order size between groups once outliers were removed.Data-Driven Decision: Successfully stopped the test, concluding that Group B is the definitive leader due to its superior conversion efficiency, safely recommending full-scale implementation to boost platform revenue.
+
+---
+
+## 📌 Problem
+
+The e-commerce platform lacked a structured, data-driven mechanism to validate and prioritize growth initiatives, risking inefficient resource allocation on marketing and product changes. The objective of this project was twofold: first, to systematically prioritize nine revenue-driving hypotheses using frameworks that balance business value against implementation cost; and second, to analyze a live A/B test to determine if the proposed changes statistically improved conversion rates and average order values without introducing anomalous distortions.
+
+---
+
+## 🛠️ What I Did (Step-by-Step)
+
+### 1. Data Preprocessing & Integrity Audit
+* **Cleaned and parsed** temporal variables across datasets (`orders_us.csv` and `visits_us.csv`).
+* **Identified and mitigated** critical data integrity issues, specifically detecting and isolating cross-contamination users (visitors who erroneously appeared in both test groups A and B) to prevent variance pollution.
+
+### 2. Algorithmic Hypothesis Prioritization
+* **ICE Scoring:** Evaluated and ranked the 9 marketing hypotheses based on *Impact*, *Confidence*, and *Effort*.
+* **RICE Scoring:** Integrated the *Reach* metric into the mathematical framework to recalibrate priorities based on total customer exposure.
+* **Sensitivity Analysis:** Compared both frameworks to evaluate how scaling user reach shifts strategic priorities, justifying why certain high-effort hypotheses moved to the top of the backlog.
+
+### 3. Cumulative A/B Test Metrics & Visual Analysis
+* **Computed and visualized** cumulative revenue and cumulative average purchase size per group over time to monitor structural stability and trend progression.
+* **Plotted the relative difference** in cumulative average order size for Group B vs. Group A to locate fluctuations and potential stabilization points.
+* **Calculated and mapped** daily conversion rates (orders/visits) to track behavioral divergence between segments.
+
+### 4. Statistical Anomalies & Outlier Filtering
+* **Generated scatter plots** for order volume per user and individual transaction revenue to visually isolate extreme behavior.
+* **Calculated the 95th and 99th percentiles** for both metrics to establish mathematical thresholds for anomalies, defining data points beyond the 95th percentile as statistical outliers.
+
+### 5. Hypotheses Testing & Significance Evaluation
+* **Formulated Null ($H_0$) and Alternative ($H_1$) hypotheses** for conversion rates and average order values.
+* **Conducted Mann-Whitney U tests** to evaluate statistical significance on raw data.
+* **Filtered out the calculated outliers** and re-ran the non-parametric tests on the clean dataset to isolate the true treatment effect from noise.
+
+---
+
+## 💼 Operational Impact & Decision Matrix
+
+When choosing a prioritization framework or determining an A/B test outcome, evaluating engineering costs against user reach is critical for maximizing ROI. Below is the decision framework applied to this project:
+
+| Phase | Evaluation Criteria | Strategic Choice | Business Rationale |
+| :--- | :--- | :--- | :--- |
+| **Backlog Prioritization** | ICE vs. RICE | **RICE Framework** | ICE biased high-impact changes that only affected a tiny fraction of users. RICE mathematically favored initiatives with a massive **Reach**, optimizing engineering resources for maximum revenue exposure. |
+| **Data Integrity** | Raw vs. Filtered Data | **Filtered Data (95th Percentile)** | Raw data was heavily distorted by large, isolated wholesale-like orders. Filtering the top 5% of anomalies allowed us to see the true statistical behavior of standard retail customers. |
+| **A/B Test Outcome** | Stop vs. Continue Test | **Stop Test & Declare Winner** | The conversion rate achieved a clear statistical divergence and stabilized early on. Continuing the test would waste traffic and advertising spend without changing the statistical outcome. |
+
+---
+
+## 🚀 Key Results
+
+* **Prioritization Shift:** Identified that introducing **Reach** shifted the #1 priority hypothesis from the ICE backlog downward, elevating a broader-reach marketing initiative that maximized customer exposure and optimized implementation costs.
+* **Statistically Significant Conversion:** The filtered Mann-Whitney U test confirmed a statistically significant increase in the conversion rate for **Group B**, establishing it as the clear leader in driving user transactions.
+* **Order Value Stability:** While cumulative revenue increased due to a higher volume of transactions, the statistical analysis proved there was no significant difference in the average order size between groups once outliers were removed.
+* **Data-Driven Decision:** Successfully stopped the test, concluding that **Group B is the definitive leader** due to its superior conversion efficiency, safely recommending full-scale implementation to boost platform revenue.
